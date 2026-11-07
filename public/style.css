@@ -1664,10 +1664,11 @@ body:before {
 .dock-indicator {
     z-index: 3
 }
-/* CodeVault — Bigger Liquid Glass Navigation Icons */
-
 .dock-indicator {
-    z-index: 1 !important;
+    z-index: 3;
+    cursor: grab;
+    pointer-events: auto;
+    touch-action: none;
 }
 
 .dock-item {
