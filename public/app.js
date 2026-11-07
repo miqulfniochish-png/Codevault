@@ -198,11 +198,6 @@ document.addEventListener('change', e => {
 
     $('#avatarFileName').textContent = file.name;
 });
-
-// Form yuborish
-document.addEventListener('submit', async e => {
-    // Sening avvalgi koding...
-});
   document.addEventListener('submit', async e => {
     if (e.target.id === 'profileForm') { e.preventDefault(); const body = Object.fromEntries(new FormData(e.target).entries()); body.avatarUrl = selectedAvatarData || state.user.avatarUrl || '';body.skills = String(body.skills || '').split(',').map(x => x.trim()).filter(Boolean).slice(0, 12); try { const d = await api('/api/profile', { method: 'PATCH', body: JSON.stringify(body) }); state.user = d.user; selectedAvatarData = null ;toast('Profil saqlandi'); await loadDevelopers(); render() } catch (err) { toast(err.message, true) } }
     if (e.target.id === 'authForm') { e.preventDefault(); const fd = new FormData(e.target), signup = state.page === 'signup'; try { const body = Object.fromEntries(fd.entries()); if (signup) body.role = state.registerRole; const d = await progress(signup ? 'Creating your account…' : 'Signing in…', () => api('/api/auth/' + (signup ? 'register' : 'login'), { method: 'POST', body: JSON.stringify(body) })); state.user = d.user; toast('Welcome to CodeVault'); await go('my') } catch (err) { toast(err.message, true) } }
