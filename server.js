@@ -69,6 +69,7 @@ app.use(helmet({ contentSecurityPolicy: { directives: {
   upgradeInsecureRequests: null
 }}}));
 app.use(express.json({ limit: '1mb' }));
+app.set('trust proxy', 1);
 app.use(session({
   store: new FileStore({ path: path.join(__dirname, 'sessions'), retries: 0, logFn: () => {} }),
   name: 'codevault.sid', secret: SESSION_SECRET, resave: false, saveUninitialized: false,
@@ -192,14 +193,6 @@ app.delete('/api/repos/:repoId', auth, developer, repoById, async (req, res) => 
   db.repos = db.repos.filter(r => r.id !== req.repo.id); await saveDB(); res.json({ ok: true });
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`CodeVault running on port ${PORT}`);
-});
+  app.use(express.static(path.join(__dirname, 'public')));
+  app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+  app.listen(PORT, () => console.log(`CodeVault running at http://localhost:${PORT}`));
