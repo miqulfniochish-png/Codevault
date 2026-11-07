@@ -126,11 +126,24 @@ app.patch('/api/profile', auth, async (req, res) => {
   const location = clean(req.body.location, 80);
   const website = clean(req.body.website, 180);
   const github = clean(req.body.github, 80).replace(/^@/, '');
-  const avatarUrl = clean(req.body.avatarUrl, 500);
+  const avatarUrl = String(req.body.avatarUrl || '').trim();
   const skills = Array.isArray(req.body.skills) ? [...new Set(req.body.skills.map(x => clean(x, 30)).filter(Boolean))].slice(0, 12) : [];
-  for (const url of [website, avatarUrl]) {
-    if (url && !/^https:\/\//i.test(url)) return res.status(400).json({ error: 'Website and avatar links must start with https://.' });
+if (website && !/^https:\/\//i.test(website)) {
+  return res.status(400).json({ error: 'Website link must start with https://.' });
+}
+
+if (avatarUrl) {
+  const isUrl = /^https:\/\/.{1,490}$/i.test(avatarUrl);
+  const isImage = /^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(avatarUrl);
+
+  if (!isUrl && !isImage) {
+    return res.status(400).json({ error: 'Choose a valid avatar image.' });
   }
+
+  if (avatarUrl.length > 400000) {
+    return res.status(400).json({ error: 'Avatar image is too large.' });
+  }
+}
   if (github && !/^[a-zA-Z0-9-]{1,39}$/.test(github)) return res.status(400).json({ error: 'GitHub username is not valid.' });
   Object.assign(req.user, { displayName, bio, location, website, github, avatarUrl, skills });
   await saveDB();

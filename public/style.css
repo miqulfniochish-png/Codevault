@@ -1799,3 +1799,73 @@ body:before {
         transform: translateY(0);
     }
 }
+/* Developer name — single line */
+.developer-main {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.developer-main > span:last-child {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.developer-main b {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: normal;
+}
+
+.developer-card {
+    flex-wrap: nowrap;
+    min-width: 0;
+}
+
+.developer-card .follow-btn {
+    flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+    .developer-card {
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .developer-card .follow-btn {
+        margin-left: 0;
+    }
+}
+.avatar-upload {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.avatar-upload > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+#avatarFileName {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+#avatarPreview {
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+#avatarPreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
