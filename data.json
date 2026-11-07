@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": "b76bffc445354500fba1afa1",
+      "username": "Erlan2",
+      "email": "uzdigitalmaster@gmail.com",
+      "passwordHash": "$2a$12$QMm4x0hnbN9NoniCBPlZOOVB91QM3CodQewvwhoTDSf38jL41B6uK",
+      "role": "developer",
+      "displayName": "",
+      "bio": "",
+      "location": "",
+      "website": "",
+      "github": "",
+      "skills": [],
+      "avatarUrl": "",
+      "followingIds": [],
+      "createdAt": "2026-11-07T04:36:33.021Z"
+    },
+    {
+      "id": "c5f98f77b767bde8aaece04e",
+      "username": "tester",
+      "email": "zaxidatulabayeva@gmail.com",
+      "passwordHash": "$2a$12$mHPQ3hcp0sCopCkNBg.4Ve54Kq8bfXS0QX55cgklv1VkHeKYkAi8.",
+      "role": "user",
+      "displayName": "",
+      "bio": "",
+      "location": "",
+      "website": "",
+      "github": "",
+      "skills": [],
+      "avatarUrl": "",
+      "followingIds": [
+        "b76bffc445354500fba1afa1"
+      ],
+      "createdAt": "2026-11-07T04:39:53.215Z"
+    }
+  ],
+  "repos": [
+    {
+      "id": "a1bc494af62e47c5db8c7c2b",
+      "name": "Quizly",
+      "description": "Quizly - hozircha demo",
+      "projectUrl": "https://quizlyweb.fadehost.app/",
+      "projectImageData": "",
+      "ownerId": "b76bffc445354500fba1afa1",
+      "ownerName": "Erlan2",
+      "createdAt": "2026-11-07T04:37:18.971Z",
+      "updatedAt": "2026-11-07T04:37:18.971Z",
+      "files": []
+    }
+  ]
+}
