@@ -1764,3 +1764,38 @@ body:before {
         transition-duration: .01ms !important;
     }
 }
+/* FIX: Remove full-page blur during page transitions */
+
+.page-enter {
+    animation: page-arrive-clean .25s ease both !important;
+    filter: none !important;
+}
+
+.reveal-item {
+    animation: item-arrive-clean .3s ease both !important;
+    filter: none !important;
+}
+
+@keyframes page-arrive-clean {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes item-arrive-clean {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
