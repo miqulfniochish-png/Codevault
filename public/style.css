@@ -1699,3 +1699,68 @@ body:before {
 .dock-item {
     gap: 3px;
 }
+/* CodeVault — Mobile Performance Optimization */
+
+@media (max-width: 620px) {
+
+    body {
+        background-attachment: scroll !important;
+    }
+
+    .topbar,
+    .glass-dock,
+    .modal,
+    .modal-backdrop,
+    .glass-card,
+    .theme-pop {
+        backdrop-filter: blur(10px) saturate(1.2) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(1.2) !important;
+    }
+
+    .glass-dock {
+        box-shadow: 0 8px 25px #0003, inset 0 1px 0 #ffffff25;
+    }
+
+    .repo-card,
+    .profile-card,
+    .settings-card,
+    .form-card {
+        box-shadow: 0 5px 18px #0002;
+    }
+
+    .repo-card:hover {
+        transform: none;
+    }
+
+    .page-enter,
+    .reveal-item {
+        animation-duration: .25s;
+        filter: none;
+    }
+
+    .modal {
+        animation-duration: .2s;
+    }
+
+    body:before {
+        opacity: .1;
+    }
+
+    .hero-orb {
+        box-shadow: inset 0 0 20px var(--glow);
+    }
+
+    .dock-icon {
+        filter: none;
+    }
+}
+
+/* Reduce motion when requested by the device */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
